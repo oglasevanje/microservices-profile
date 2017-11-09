@@ -1,21 +1,22 @@
-language: java
-
 sudo: required
 
 services:
   - docker
+language: java
 
-env:
-  COMPOSE_VERSION: 1.4.1
+dist: trusty
 
-before_install:
- - curl -L https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
- - chmod +x docker-compose
- - sudo mv docker-compose /usr/local/bin
+jdk:
+  - openjdk8
+
+cache:
+  directories:
+    - $HOME/.m2
 
 script:
-  - docker-compose build
-  - docker-compose run test
+  - mvn clean package -U
+  - docker build -t moj-repozitorij/rso-customers .
 
-  
-docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
+after_success:
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  - docker push oglasevanje
