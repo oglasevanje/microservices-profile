@@ -4,7 +4,7 @@ RUN mkdir /app
 
 WORKDIR /app
 
-ADD ./microservices-profile-api-2.5.0-SNAPSHOT/app
+ADD ./microservices-profile-api-2.5.0-SNAPSHOT /app
 
 EXPOSE 8080
 
