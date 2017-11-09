@@ -15,8 +15,8 @@ cache:
 
 script:
   - mvn clean package -U
-  - docker build -t moj-repozitorij/rso-customers .
+  - docker build -t oglasevanje/microservices-profile .
 
 after_success:
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-  - docker push oglasevanje
+  - docker push oglasevanje/microservices-profile
