@@ -4,7 +4,7 @@ RUN mkdir /app
 
 WORKDIR /app
 
-ADD ./microservices-profile/profile/target/microservices-profile-api-2.5.0-SNAPSHOT /app
+ADD /home/travis/build/oglasevanje/microservices-profile/models/target/microservices-profile-models-2.5.0-SNAPSHOT.jar /app
 
 EXPOSE 8080
 
